@@ -49,7 +49,8 @@ public class ClientResource {
 	public ResponseEntity<ClientDTO> insert(@RequestBody ClientDTO dto) {
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder
-				.fromCurrentRequest().path("/{id}")
+				.fromCurrentRequest()
+				.path("/{id}")
 				.buildAndExpand(dto.getId())
 				.toUri();
 		return ResponseEntity.created(uri).body(dto);
